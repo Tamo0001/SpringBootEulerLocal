@@ -4,7 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @Component
+
 public class Euler6 {
+
 private final SumSquare sumSquare;
 
 
