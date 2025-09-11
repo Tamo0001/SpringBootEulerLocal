@@ -21,23 +21,43 @@ public class HomeController {
     @Autowired
     private Euler7 euler7;
 
+    @Autowired
+    private Euler8 euler8;
 
+    /**
+     * Define the URL.
+     *
+     * @return the error that should be displayed on the screen.
+     */
     @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> index() {
         logger.info("Application name: {}", appName);
         return ResponseEntity.status(404).body("not found");
     }
 
-    @GetMapping(value = "/euler7/loesung/{euler}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Integer> test(@PathVariable("euler") int euler) {
+    /**
+     * Define the URL on which you can open and type in the nth prime number you want to check.
+     *
+     * @param input the input from the website.
+     * @return the nth prime number that gets displayed on the website.
+     */
+    @GetMapping(value = "/euler7/{input}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Integer> getNthPrimeNumber(@PathVariable("input") int input) {
+        int result = euler7.getNthPrimeNumber(input);
+        return ResponseEntity.ok(result);
+    }
+
+    /**
+     * REST endpoint that returns the largest product of 13 consecutive digits (Euler problem 8).
+     *
+     * @return JSON with the result
+     */
+    @GetMapping(value = "/euler8", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Long> test2() {
 
         // N-te Primzahl berechnen
-        int result = euler7.primenumber(euler);
+        long result = euler8.highestSumOf13DigitsInARow();
 
         return ResponseEntity.ok(result);
     }
 }
-
-
-
-

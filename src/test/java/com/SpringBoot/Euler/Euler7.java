@@ -8,29 +8,23 @@ import org.springframework.stereotype.Component;
 public class Euler7 {
     private final MathHelper mathHelper;
 
-//    public Euler7(MathHelper mathHelper) {
-//        this.mathHelper = mathHelper;
-//    }
 
-    /**asks for any number "i" if it is a primenumber. i
+    /**
+     * Index starts by 1
      *
-     * @return
+     * @return Nth Prime number.
      */
-    public int primenumber(int searchedPrimenumber){
-        //MathHelper mathHelper = new MathHelper();
+    public int getNthPrimeNumber(int targetPrimeNumberIndex) {
         int i = 1;
-        int primenumberNumber = 0;
-        while (true){
-            i+=1;
-            if (mathHelper.isPrimenumber(i)){
-                primenumberNumber += 1;
-                System.out.println(i);
-                if (primenumberNumber == searchedPrimenumber){
+        int currentPrimeNumberIndex = 0;
+        while (true) {
+            i += 1;
+            if (mathHelper.isPrimenumber(i)) {
+                currentPrimeNumberIndex += 1;
+                if (currentPrimeNumberIndex == targetPrimeNumberIndex) {
                     return i;
                 }
-
             }
-
         }
     }
 }
