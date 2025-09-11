@@ -37,13 +37,13 @@ public class Euler8 {
     public long highestSumOf13DigitsInARow() {
         bigDigit = bigDigit.replace("\n", "");
         for (int i = 0; i < bigDigit.length() - NumberOfDigitsYouWantMultiplied; i++) {
-            highestNumber = checksSumOfNNumbersAfterI(i);
+            highestNumber = checksProductOfNNumbersAfterI(i);
         }
         System.out.println(highestNumber);
         return highestNumber;
     }
 
-    private long checksSumOfNNumbersAfterI(int i) {
+    private long checksProductOfNNumbersAfterI(int i) {
         long testHighNumber = 1L;
         for (int x = 0; x < NumberOfDigitsYouWantMultiplied; x++) {
             char rowOfNumbersAfterDigiti = bigDigit.charAt(i + x);
