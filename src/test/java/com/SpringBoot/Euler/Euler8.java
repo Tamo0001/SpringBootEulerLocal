@@ -2,11 +2,9 @@ package com.SpringBoot.Euler;
 
 import org.springframework.stereotype.Component;
 
-import java.sql.SQLOutput;
-import java.util.LinkedList;
-import java.util.List;
 @Component
 public class Euler8 {
+    public static final int NumberofDigitsYouWantMultiplied = 13;
     long highestnumber = 1L;
     long testhighnumber = 1L;
     int indexHighestnumber = 0;
@@ -34,30 +32,28 @@ public class Euler8 {
     /**
      * Finds the largest product of 13 consecutive digits in the number bigDigit.
      *
-     * @return the largest product found
+     * @return The largest product found.
      */
-    public long highest13Digits() {
+    public long highestSumOf13DigitsInARow() {
         bigDigit = bigDigit.replace("\n", "");
-        for (int i = 0; i < bigDigit.length()-13; i++) {
-            char c = bigDigit.charAt(i);
-            int digit = Character.getNumericValue(c);
-            long testhighnumber = 1L;
-            for (int x = 0; x < 13; x++) {
-                    char ci = bigDigit.charAt(i + x);
-                    int digitvalue = Character.getNumericValue(ci);
-                    testhighnumber *= digitvalue;
-                    if (testhighnumber > highestnumber) {
-                        highestnumber = testhighnumber;
-                        indexHighestnumber = i;
-                        System.out.print(indexHighestnumber + "    ");
-                        System.out.println(highestnumber);
-
-
-                    }
-                }
-
+        for (int i = 0; i < bigDigit.length() - NumberofDigitsYouWantMultiplied; i++) {
+            highestnumber = checksSumOfNNumbersAfterI(i);
         }
-        System.out.println(indexHighestnumber);
+        System.out.println(highestnumber);
+        return highestnumber;
+    }
+
+    private long checksSumOfNNumbersAfterI(int i) {
+        long testhighnumber = 1L;
+        for (int x = 0; x < NumberofDigitsYouWantMultiplied; x++) {
+            char rowOfNumbersAfterDigiti = bigDigit.charAt(i + x);
+            int digitvalue = Character.getNumericValue(rowOfNumbersAfterDigiti);
+            testhighnumber *= digitvalue;
+            if (testhighnumber > highestnumber) {
+                highestnumber = testhighnumber;
+                indexHighestnumber = i;
+            }
+        }
         return highestnumber;
     }
 

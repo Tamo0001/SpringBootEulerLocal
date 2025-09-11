@@ -23,6 +23,7 @@ public class HomeController {
 
     @Autowired
     private Euler8 euler8;
+
     /**
      * Define the URL.
      *
@@ -47,14 +48,15 @@ public class HomeController {
     }
 
     /**
+     * REST endpoint that returns the largest product of 13 consecutive digits (Euler problem 8).
      *
-     * @return
+     * @return JSON with the result
      */
     @GetMapping(value = "/euler8", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Long> test2() {
 
         // N-te Primzahl berechnen
-        long result = euler8.highest13Digits();
+        long result = euler8.highestSumOf13DigitsInARow();
 
         return ResponseEntity.ok(result);
     }
