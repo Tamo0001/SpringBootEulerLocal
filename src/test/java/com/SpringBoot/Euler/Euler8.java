@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Euler8 {
     public static final int NumberofDigitsYouWantMultiplied = 13;
-    long highestnumber = 1L;
+    long highestNumber = 1L;
     long testhighnumber = 1L;
     int indexHighestnumber = 0;
     String bigDigit = "73167176531330624919225119674426574742355349194934\n" +
@@ -37,24 +37,24 @@ public class Euler8 {
     public long highestSumOf13DigitsInARow() {
         bigDigit = bigDigit.replace("\n", "");
         for (int i = 0; i < bigDigit.length() - NumberofDigitsYouWantMultiplied; i++) {
-            highestnumber = checksSumOfNNumbersAfterI(i);
+            highestNumber = checksSumOfNNumbersAfterI(i);
         }
-        System.out.println(highestnumber);
-        return highestnumber;
+        System.out.println(highestNumber);
+        return highestNumber;
     }
 
     private long checksSumOfNNumbersAfterI(int i) {
-        long testhighnumber = 1L;
+        long testHighNumber = 1L;
         for (int x = 0; x < NumberofDigitsYouWantMultiplied; x++) {
             char rowOfNumbersAfterDigiti = bigDigit.charAt(i + x);
-            int digitvalue = Character.getNumericValue(rowOfNumbersAfterDigiti);
-            testhighnumber *= digitvalue;
-            if (testhighnumber > highestnumber) {
-                highestnumber = testhighnumber;
+            int digitValue = Character.getNumericValue(rowOfNumbersAfterDigiti);
+            testHighNumber *= digitValue;
+            if (testHighNumber > highestNumber) {
+                highestNumber = testHighNumber;
                 indexHighestnumber = i;
             }
         }
-        return highestnumber;
+        return highestNumber;
     }
 
 
