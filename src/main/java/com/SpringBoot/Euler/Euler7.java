@@ -3,6 +3,8 @@ package com.SpringBoot.Euler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+
 @RequiredArgsConstructor
 @Component
 public class Euler7 {
@@ -14,7 +16,11 @@ public class Euler7 {
      *
      * @return Nth Prime number.
      */
-    public int getNthPrimeNumber(int targetPrimeNumberIndex) {
+    public int getNthPrimeNumber(int targetPrimeNumberIndex) throws Exception {
+        if (targetPrimeNumberIndex <= 0) {
+            throw new IOException("Invalid Number");
+        }
+
         int i = 1;
         int currentPrimeNumberIndex = 0;
         while (true) {
@@ -26,5 +32,6 @@ public class Euler7 {
                 }
             }
         }
+
     }
 }
