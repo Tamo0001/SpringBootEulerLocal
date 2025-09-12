@@ -42,7 +42,7 @@ public class HomeController {
      * @return the nth prime number that gets displayed on the website.
      */
     @GetMapping(value = "/euler7/{input}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Integer> getNthPrimeNumber(@PathVariable("input") int input) {
+    public ResponseEntity<Integer> getNthPrimeNumber(@PathVariable("input") int input) throws Exception {
         int result = euler7.getNthPrimeNumber(input);
         return ResponseEntity.ok(result);
     }
